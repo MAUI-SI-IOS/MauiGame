@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiGame.Views.HallOfFamePage"
+             Title="Hall of Fame"
+             BackgroundColor="Black">
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20">
+        <Label Grid.Row="0"
+               Text="HALL OF FAME"
+               FontSize="36"
+               FontAttributes="Bold"
+               TextColor="Gold"
+               HorizontalOptions="Center"
+               Margin="0, 0, 0, 20" />
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding HighScores}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*, Auto" Padding="10">
+                        <Label Grid.Column="0" Text="{Binding Name}" FontSize="24" TextColor="White" />
+                        <Label Grid.Column="1" Text="{Binding Score}" FontSize="24" TextColor="Gold" FontAttributes="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Label Text="No high scores yet!"
+                       TextColor="White"
+                       FontSize="20"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <Button Grid.Row="2"
+                Text="Back to Game"
+                Clicked="OnBackClicked"
+                FontSize="20"
+                Margin="0, 20, 0, 0"
+                BackgroundColor="#333333" />
+    </Grid>
+
+</ContentPage>
